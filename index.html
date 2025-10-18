@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3.7: Reflecting on Quality and Context - Teacher's Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            height: 1600px;
+            overflow-y: auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        .lesson-info {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+        .nav-buttons a {
+            display: block;
+            padding: 0.4rem 0.6rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+        .nav-buttons a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .content {
+            padding: 2rem;
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .section h4 {
+            color: #555;
+            font-size: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .tip-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .script-box {
+            background: #fafafa;
+            border: 2px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .script-label {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-style: normal;
+            font-weight: bold;
+        }
+        .objectives-list {
+            margin: 1rem 0;
+        }
+        .objectives-list ul, .objectives-list ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        .objectives-list li {
+            margin: 0.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+        table tr:hover {
+            background: #f5f5f5;
+        }
+        .timeline {
+            margin: 1.5rem 0;
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .timeline-time {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+        .timeline-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .timeline-content li {
+            margin: 0.3rem 0;
+        }
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .material-card {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .material-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        .material-card ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .print-button:hover {
+            background: #45a049;
+        }
+        @media print {
+            .print-button {
+                display: none;
+            }
+            .header {
+                position: relative;
+            }
+            .nav-buttons {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💭 Lesson 3.7: Reflecting on Quality and Context</h1>
+            <div class="subtitle">Teacher's Guide | Discussion Day</div>
+            <div class="lesson-info">Chapter 3: Prompt Engineering</div>
+            <div class="nav-buttons">
+                <a href="#overview">📋 Overview</a>
+                <a href="#objectives">🎯 Objectives</a>
+                <a href="#materials">📦 Materials</a>
+                <a href="#preparation">🔧 Preparation</a>
+                <a href="#lesson-flow">⏱️ Lesson Flow</a>
+                <a href="#facilitation">👨‍🏫 Facilitation</a>
+                <a href="#assessment">📊 Assessment</a>
+                <a href="#differentiation">♿ Support</a>
+                <a href="#challenges">🚧 Challenges</a>
+                <a href="#reflection">💭 Reflection</a>
+            </div>
+        </div>
+
+        <button class="print-button" onclick="window.print()">🖨️ Print Guide</button>
+
+        <div class="content">
+
+            <!-- OVERVIEW SECTION -->
+            <section id="overview" class="section">
+                <h2>📋 Lesson Overview</h2>
+                
+                <div class="highlight-box">
+                    <h4>🎯 The Big Idea</h4>
+                    <p>Students synthesize their learning from Lessons 3.5 (Recognizing Good Output) and 3.6 (AI Whispering Your Creativity) through structured discussion. They develop metacognitive awareness of how editorial judgment functions during the prompting process—the "back of the mind voice" that evaluates responses and guides iteration decisions. Through reflection on their field journal entries and sharing experiences with peers, students build a shared vocabulary for describing quality and understanding how context shapes AI output.</p>
+                </div>
+
+                <h3>Key Conceptual Goals</h3>
+                <p>By the end of this lesson, students should:</p>
+                <div class="objectives-list">
+                    <ul>
+                        <li><strong>Articulate</strong> the connection between context decisions and output quality</li>
+                        <li><strong>Recognize</strong> their own developing editorial judgment as an internal evaluative voice</li>
+                        <li><strong>Compare</strong> quality criteria across different domains and contexts</li>
+                        <li><strong>Synthesize</strong> insights from individual experiences into shared understanding</li>
+                        <li><strong>Apply</strong> metacognitive awareness to future prompting work</li>
+                        <li><strong>Process</strong> their creative project experiences using the editorial framework</li>
+                    </ul>
+                </div>
+
+                <h3>This Lesson in Context</h3>
+
+                <div class="success-box">
+                    <h4>✅ What Students Already Know:</h4>
+                    <ul>
+                        <li>Four basic prompt structures and iteration cycles (Lesson 3.2)</li>
+                        <li>How context decisions affect AI responses (Lesson 3.3)</li>
+                        <li>Why writing skills enable editorial judgment (Lesson 3.4)</li>
+                        <li><strong>Lesson 3.5 (Two Days Ago):</strong> Systematic criteria for evaluating AI output—clarity, engagement, accuracy, completeness, audience fit</li>
+                        <li><strong>Yesterday (Lesson 3.6):</strong> Applied prompt engineering skills to creative writing projects, exercising editorial judgment in practice</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>🔮 What This Lesson Prepares Students For:</h4>
+                    <ul>
+                        <li><strong>Tomorrow (Lesson 3.8):</strong> Lab Day building simulations where editorial judgment determines when output is "good enough"</li>
+                        <li><strong>Lesson 3.9:</strong> Final synthesis discussion for Chapter 3</li>
+                        <li><strong>Creative Project:</strong> Applying reflective editorial judgment to all story decisions</li>
+                        <li><strong>All future prompting:</strong> The internalized "back of the mind voice" that guides iteration</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- OBJECTIVES SECTION -->
+            <section id="objectives" class="section">
+                <h2>🎯 Learning Objectives</h2>
+
+                <h3>Content Knowledge</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li>Students will explain how context decisions affect output quality across different domains</li>
+                        <li>Students will describe the "back of the mind voice" that evaluates during iteration</li>
+                        <li>Students will identify patterns in what makes AI output effective across varied topics</li>
+                        <li>Students will articulate how evaluation criteria vary by audience, purpose, and domain</li>
+                    </ul>
+                </div>
+
+                <h3>Skills & Practices</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li>Students will synthesize insights from field journal documentation</li>
+                        <li>Students will contribute meaningfully to structured academic discussions</li>
+                        <li>Students will build on peers' ideas to develop shared understanding</li>
+                        <li>Students will apply metacognitive reflection to their own learning process</li>
+                        <li>Students will connect abstract concepts to concrete experiences</li>
+                    </ul>
+                </div>
+
+                <h3>Dispositions & Mindsets</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li>Students will develop confidence in their editorial judgment</li>
+                        <li>Students will appreciate multiple perspectives on quality evaluation</li>
+                        <li>Students will cultivate metacognitive awareness of their thinking processes</li>
+                        <li>Students will recognize that editorial judgment improves with practice and reflection</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- MATERIALS SECTION -->
+            <section id="materials" class="section">
+                <h2>📦 Materials Needed</h2>
+
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <h4>🔴 Required</h4>
+                        <ul>
+                            <li>Student field journals (from Lessons 3.5 and 3.6)</li>
+                            <li>Student-facing Lesson 3.7 discussion guide</li>
+                            <li>Whiteboard or chart paper for capturing insights</li>
+                            <li>Discussion prompts (provided in this guide)</li>
+                        </ul>
+                    </div>
+
+                    <div class="material-card">
+                        <h4>🟡 Recommended</h4>
+                        <ul>
+                            <li>Document camera or way to display anonymous journal entries</li>
+                            <li>Colored markers for categorizing insights</li>
+                            <li>Timer for pacing discussion rounds</li>
+                            <li>Name cards or talking chips for equitable participation</li>
+                        </ul>
+                    </div>
+
+                    <div class="material-card">
+                        <h4>🟢 Optional</h4>
+                        <ul>
+                            <li>Anchor chart from Lesson 3.3 (context decisions)</li>
+                            <li>Anchor chart from Lesson 3.5 (evaluation criteria)</li>
+                            <li>Index cards for reflection exit ticket</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PREPARATION SECTION -->
+            <section id="preparation" class="section">
+                <h2>🔧 Teacher Preparation</h2>
+
+                <h3>Before Class Starts</h3>
+
+                <div class="objectives-list">
+                    <h4>Review Student Field Journals (15-20 minutes before class):</h4>
+                    <ul>
+                        <li>Scan Lesson 3.6 field journal entries from yesterday</li>
+                        <li>Identify 3-4 strong examples that show specific criteria and metacognitive reflection (ask permission to share anonymously)</li>
+                        <li>Note common themes or patterns across student observations</li>
+                        <li>Identify students who may need extra support participating (prepare specific prompts for them)</li>
+                    </ul>
+                </div>
+
+                <div class="objectives-list">
+                    <h4>Prepare Discussion Space:</h4>
+                    <ul>
+                        <li>Arrange seats to facilitate conversation (circle, U-shape, or small groups)</li>
+                        <li>Have whiteboard/chart paper ready with three columns: <strong>Quality | Context | The Editorial Eye</strong></li>
+                        <li>Post discussion norms if your class uses them</li>
+                        <li>Queue up Lesson 3.3 anchor chart (if available) for reference</li>
+                    </ul>
+                </div>
+
+                <h3>Mental Preparation</h3>
+
+                <p>This is a <strong>consolidation lesson</strong>—students are making sense of two significant concepts (context and quality) simultaneously. Your role is to:</p>
+                <div class="objectives-list">
+                    <ul>
+                        <li><strong>Listen more than you talk</strong> (aim for 80% student voice)</li>
+                        <li><strong>Connect ideas</strong> students share ("That's similar to what Jamal said...")</li>
+                        <li><strong>Press for specificity</strong> ("Can you give an example from your journal?")</li>
+                        <li><strong>Validate developing understanding</strong> ("You're right that context matters differently for different topics")</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ If Many Students Have Insufficient Documentation</h4>
+                    <p>If you discovered yesterday that many field journal entries were thin or vague, build in 5 minutes at the start of class for students to enhance their entries before discussion begins.</p>
+                </div>
+            </section>
+
+            <!-- LESSON FLOW SECTION -->
+            <section id="lesson-flow" class="section">
+                <h2>⏱️ Lesson Flow & Timeline</h2>
+
+                <div class="timeline">
+                    <h3>Suggested 50-Minute Structure</h3>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:00-0:05<br>(5 min)</div>
+                        <div class="timeline-content">
+                            <strong>Opening: Framing the Discussion</strong>
+                            <ul>
+                                <li>Connect to prior learning (Lessons 3.5 and 3.6)</li>
+                                <li>Establish discussion purpose</li>
+                                <li>Review participation norms</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:05-0:17<br>(12 min)</div>
+                        <div class="timeline-content">
+                            <strong>Activity 1: Think-Pair-Share on Quality</strong>
+                            <ul>
+                                <li>Individual reflection on Lesson 3.5 and 3.6 experiences (3 min)</li>
+                                <li>Partner discussion (4 min)</li>
+                                <li>Whole-class sharing and synthesis (5 min)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:17-0:27<br>(10 min)</div>
+                        <div class="timeline-content">
+                            <strong>Activity 2: Context Revisited</strong>
+                            <ul>
+                                <li>Connect quality observations back to Lesson 3.3</li>
+                                <li>Explore how context decisions affect output quality</li>
+                                <li>Build shared understanding</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:27-0:42<br>(15 min)</div>
+                        <div class="timeline-content">
+                            <strong>Activity 3: The Editorial Voice</strong>
+                            <ul>
+                                <li>Introduce "back of the mind voice" concept</li>
+                                <li>Students identify when they use editorial judgment</li>
+                                <li>Discuss how this voice develops and guides iteration</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:42-0:47<br>(5 min)</div>
+                        <div class="timeline-content">
+                            <strong>Activity 4: Creative Project Check-In</strong>
+                            <ul>
+                                <li>Apply editorial framework to story development</li>
+                                <li>Share successes and challenges</li>
+                                <li>Preview future work</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:47-0:50<br>(3 min)</div>
+                        <div class="timeline-content">
+                            <strong>Closing: Synthesis and Field Journal</strong>
+                            <ul>
+                                <li>Key takeaways</li>
+                                <li>Field journal reflection prompt</li>
+                                <li>Bridge to tomorrow's lab</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FACILITATION SECTION -->
+            <section id="facilitation" class="section">
+                <h2>👨‍🏫 Detailed Facilitation Guide</h2>
+
+                <h3>Opening: Framing the Discussion (5 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">OPENING SCRIPT</div>
+                    <p>"Welcome back. Over the past few days, you've been building and applying crucial skills:</p>
+                    <ul>
+                        <li><strong>Lesson 3.5 (two days ago):</strong> You systematically developed your editorial eye—learning to evaluate AI output using specific criteria.</li>
+                        <li><strong>Yesterday (Lesson 3.6):</strong> You applied those skills to your creative projects, using editorial judgment to guide your work with AI.</li>
+                    </ul>
+                    <p>"<strong>Today, we're connecting these experiences.</strong> Through discussion, we'll explore how context decisions and quality evaluation work together. We'll also talk about something I'm calling 'the back of the mind voice'—that internal editor that's developing as you work with AI.</p>
+                    <p>"This is a Discussion Day, which means <strong>you'll do most of the talking</strong>. I'll facilitate, ask questions, and help us build on each other's ideas. Have your field journals ready—we'll be using your observations throughout."</p>
+                </div>
+
+                <h4>Discussion Norms Reminder (if applicable):</h4>
+                <ul>
+                    <li>One voice at a time</li>
+                    <li>Build on others' ideas ("I agree with [name] because..." or "That makes me think...")</li>
+                    <li>Use specific examples from field journals</li>
+                    <li>It's okay to change your thinking based on discussion</li>
+                    <li>Respect different perspectives</li>
+                </ul>
+
+                <h3>Activity 1: Think-Pair-Share on Quality (12 minutes)</h3>
+
+                <h4>Individual Think (3 minutes)</h4>
+
+                <div class="script-box">
+                    <div class="script-label">PROMPT</div>
+                    <p>"Open your field journal to your entries from Lessons 3.5 and 3.6. Silently read through what you wrote about quality evaluation and your creative work. As you read, think about these questions:</p>
+                    <ol>
+                        <li><strong>What surprised you?</strong> Did you discover something about quality evaluation that you didn't expect?</li>
+                        <li><strong>What was hardest?</strong> Which aspect of judging AI output was most challenging?</li>
+                        <li><strong>What got easier?</strong> How did your ability to recognize quality change?</li>
+                    </ol>
+                    <p>"You have 3 minutes of silent thinking time. You might want to add notes to your journal as you reflect."</p>
+                </div>
+
+                <h4>Pair Discussion (4 minutes)</h4>
+
+                <div class="script-box">
+                    <div class="script-label">TRANSITION TO PAIRS</div>
+                    <p>"Now turn to a partner. Take turns sharing:</p>
+                    <ul>
+                        <li>ONE surprising discovery from your evaluation work</li>
+                        <li>ONE example of a quality difference you noticed</li>
+                    </ul>
+                    <p>"Each person gets about 2 minutes. I'll give you a heads-up when it's time to switch."</p>
+                </div>
+
+                <h4>Whole-Class Share (5 minutes)</h4>
+
+                <div class="script-box">
+                    <div class="script-label">SYNTHESIS PROTOCOL</div>
+                    <p>"Let's hear from several pairs. I'm looking for <strong>surprising discoveries</strong> about quality evaluation. When you share, name the specific criterion or observation from your journal."</p>
+                </div>
+
+                <p><strong>Capture insights on the board under "Quality" column.</strong> Use students' own words. Look for patterns.</p>
+
+                <div class="tip-box">
+                    <h4>Common Themes to Listen For:</h4>
+                    <ul>
+                        <li>Quality criteria vary by topic/audience</li>
+                        <li>Small changes (word choice, sentence length) have big impacts</li>
+                        <li>Evaluation is easier with systematic criteria vs. gut reactions</li>
+                        <li>Different domains prioritize different criteria</li>
+                        <li>"Good enough" depends on purpose</li>
+                    </ul>
+                </div>
+
+                <h3>Activity 2: Context Revisited (10 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">BRIDGING SCRIPT</div>
+                    <p>"We've been talking about quality—what makes output effective. Now let's connect back to Lesson 3.3, where we explored how context decisions affect AI responses.</p>
+                    <p>"Here's my question for you: <strong>When you were evaluating AI responses or working on your creative project, did the CONTEXT of your prompt affect what you considered 'good' output?</strong></p>
+                    <p>"Think-pair-share again, but this time focusing on the connection between context and quality."</p>
+                </div>
+
+                <h4>Think-Pair-Share Round 2 (6 minutes total)</h4>
+                <ul>
+                    <li><strong>Individual Think (1 min):</strong> How did context decisions affect what counted as "good"?</li>
+                    <li><strong>Pair Discussion (2 min):</strong> Share examples where context mattered</li>
+                    <li><strong>Whole-Class Discussion (3 min):</strong> Build shared understanding</li>
+                </ul>
+
+                <div class="success-box">
+                    <h4>Key Insights to Surface:</h4>
+                    <ol>
+                        <li><strong>Audience affects quality criteria</strong> - Expert audience = complexity okay; Beginner audience = simplicity essential</li>
+                        <li><strong>Purpose shapes evaluation</strong> - Quick overview = brevity valued; Comprehensive guide = completeness essential</li>
+                        <li><strong>Domain knowledge changes judgment</strong> - Topics you know well = easier to spot errors or gaps</li>
+                        <li><strong>Context precision improves output</strong> - Clear context = easier to evaluate fit</li>
+                    </ol>
+                </div>
+
+                <p><strong>Synthesis Question:</strong> "So if context affects quality... what does this mean for how you prompt AI?"</p>
+                <p><strong>Capture key ideas under "Context" column on board.</strong></p>
+
+                <h3>Activity 3: The Editorial Voice (15 minutes)</h3>
+
+                <p>This is the heart of the lesson—developing metacognitive awareness of editorial judgment.</p>
+
+                <div class="script-box">
+                    <div class="script-label">INTRODUCING THE CONCEPT</div>
+                    <p>"I want to introduce a concept: the <strong>'back of the mind voice.'</strong></p>
+                    <p>"When you were working in Lessons 3.5 and 3.6, evaluating AI responses and developing your stories, you were building something in your brain—a kind of internal editor. This voice looks at output and makes quick judgments: <em>That's clear. That's confusing. That needs more detail. That's perfect.</em></p>
+                    <p>"This voice develops through practice. The more you evaluate AI output with specific criteria, the faster and more automatic this judgment becomes. Eventually, it happens while you're prompting—you read a response and IMMEDIATELY know whether it's good enough or whether you need to iterate.</p>
+                    <p>"This is what professional editors do. They've developed this voice so strongly that they can spot problems instantly. You're building the same skill, but for AI output.</p>
+                    <p>"Let's explore this together."</p>
+                </div>
+
+                <h4>Round 1: Recognizing the Voice (4 minutes)</h4>
+
+                <div class="script-box">
+                    <div class="script-label">PROMPT</div>
+                    <p>"Think about Lessons 3.5 and 3.6. When you read AI responses, did you have immediate reactions? Like reading the first sentence and thinking 'oh, this one's good' or 'this one's confusing'?</p>
+                    <p>"Turn and talk with your partner: When did you notice yourself making quick quality judgments?"</p>
+                </div>
+
+                <p>After pairs discuss, take 5-6 examples from whole class. <strong>Validate</strong> these experiences:</p>
+                <ul>
+                    <li>"That's your editorial voice developing"</li>
+                    <li>"You're noticing quality patterns automatically"</li>
+                    <li>"That quick judgment comes from systematic practice"</li>
+                </ul>
+
+                <h4>Round 2: When the Voice Guides Action (4 minutes)</h4>
+
+                <div class="script-box">
+                    <div class="script-label">PROMPT</div>
+                    <p>"Now think about yesterday's creative work. You prompted AI for a story element. AI gave you a response.</p>
+                    <p>"Your 'back of the mind voice' read it and said: <em>'This is bland. It needs more personality.'</em></p>
+                    <p>"What do you DO with that judgment? How does recognizing 'this needs more personality' help you iterate?"</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Key Insight to Surface:</h4>
+                    <p>The editorial voice does two things:</p>
+                    <ol>
+                        <li><strong>EVALUATES:</strong> "This works" or "This needs improvement"</li>
+                        <li><strong>DIRECTS:</strong> "It needs more personality" tells you HOW to iterate—"Add more specific personality traits"</li>
+                    </ol>
+                    <p><strong>This is why editorial judgment is so powerful</strong>—it doesn't just say "good" or "bad," it tells you what to DO next.</p>
+                </div>
+
+                <h4>Round 3: Developing the Voice (4 minutes)</h4>
+
+                <div class="script-box">
+                    <div class="script-label">PROMPT</div>
+                    <p>"Final question: Based on your experience, what helps this editorial voice develop? What made you better at recognizing quality?"</p>
+                </div>
+
+                <p><strong>Expected Student Observations:</strong></p>
+                <ul>
+                    <li>Practice with systematic criteria</li>
+                    <li>Comparing multiple responses</li>
+                    <li>Documenting specific features</li>
+                    <li>Explaining reasoning to teammates</li>
+                    <li>Getting feedback from others</li>
+                </ul>
+
+                <p><strong>Capture key ideas under "The Editorial Eye" column.</strong></p>
+
+                <div class="tip-box">
+                    <h4>Synthesis Moment:</h4>
+                    <p>"So here's what we've discovered today:</p>
+                    <ul>
+                        <li><strong>Quality evaluation</strong> isn't just 'I like this one better.' It's systematic judgment using specific criteria.</li>
+                        <li><strong>Context decisions</strong> shape what counts as 'good'—audience, purpose, and domain all matter.</li>
+                        <li><strong>The editorial voice</strong> develops through practice and guides your iteration. It evaluates AND directs.</li>
+                    </ul>
+                    <p>"This voice is now part of how you interact with AI. Every time you prompt, this voice is working in the background, helping you decide: <em>Is this good enough, or should I iterate?</em>"</p>
+                </div>
+
+                <h3>Activity 4: Creative Project Check-In (5 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">CREATIVE PROJECT BRIDGE</div>
+                    <p>"Many of you worked on your creative projects yesterday. Let's connect today's discussion to that work.</p>
+                    <p>"Think about yesterday's session. <strong>When you read what AI generated, did you use your editorial voice?</strong> Did you think things like:</p>
+                    <ul>
+                        <li>'This character feels flat—needs more depth'</li>
+                        <li>'This dialogue doesn't sound natural'</li>
+                        <li>'This setting description is too generic'</li>
+                    </ul>
+                    <p>"Quick popcorn share—call out examples of your editorial voice at work."</p>
+                </div>
+
+                <p><strong>Take 5-8 quick examples.</strong></p>
+
+                <p><strong>Then ask:</strong> "How many of you noticed your editorial voice getting STRONGER as you worked? Like you're getting faster at recognizing what needs improvement?"</p>
+
+                <p><strong>Acknowledge growth:</strong> "That's the skill compounding. The more you practice evaluation, the better you get."</p>
+
+                <h3>Closing: Synthesis and Field Journal (3 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">CLOSING SYNTHESIS</div>
+                    <p>"Today we've connected three big ideas:</p>
+                    <ol>
+                        <li><strong>Quality evaluation uses systematic criteria</strong>—not just personal taste</li>
+                        <li><strong>Context decisions affect what 'good' means</strong>—audience, purpose, domain all matter</li>
+                        <li><strong>Your editorial voice guides iteration</strong>—it evaluates AND directs improvement</li>
+                    </ol>
+                    <p>"Tomorrow in Lesson 3.8, you'll put this editorial judgment to work building simulations. Your editorial voice will be your guide."</p>
+                </div>
+
+                <h4>Field Journal Prompt (write on board):</h4>
+
+                <div class="highlight-box">
+                    <p><em>"Describe your 'back of the mind voice.' When do you hear it most clearly? What does it help you notice? How has it changed since you started Chapter 3?"</em></p>
+                    <p><strong>OR</strong></p>
+                    <p><em>"Choose one insight from today's discussion that changed how you think about prompting AI. What was the insight? Why does it matter?"</em></p>
+                </div>
+
+                <p>Students have 2-3 minutes to write.</p>
+            </section>
+
+            <!-- ASSESSMENT SECTION -->
+            <section id="assessment" class="section">
+                <h2>📊 Assessment & Mastery Points</h2>
+
+                <h3>Today's Mastery Point Opportunity</h3>
+
+                <p><strong>Discussion Participation + Field Journal Reflection (1-2-3-4 scale)</strong></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Points</th>
+                            <th>Criteria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>4 Points<br>(Exemplary)</strong></td>
+                            <td>
+                                • Contributes multiple specific insights with examples from prior lessons<br>
+                                • Builds meaningfully on peers' ideas during discussion<br>
+                                • Articulates clear understanding of how context and quality connect<br>
+                                • Demonstrates metacognitive awareness of own editorial judgment<br>
+                                • Field journal reflection shows synthesis across lessons<br>
+                                • Makes connections to creative project experiences
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>3 Points<br>(Proficient)</strong></td>
+                            <td>
+                                • Participates actively in think-pair-share and whole-class discussion<br>
+                                • Shares at least one specific example from field journal<br>
+                                • Shows understanding of how context affects quality<br>
+                                • Recognizes developing editorial judgment<br>
+                                • Field journal reflection addresses the prompt with specific observations
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>2 Points<br>(Developing)</strong></td>
+                            <td>
+                                • Participates in pair discussions but minimal whole-class contribution<br>
+                                • Examples are general rather than specific<br>
+                                • Basic understanding of concepts but limited synthesis<br>
+                                • Field journal reflection is brief or lacks specificity<br>
+                                • May need prompting to connect ideas across lessons
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 Point<br>(Beginning)</strong></td>
+                            <td>
+                                • Minimal participation even in pair discussions<br>
+                                • Difficulty articulating insights from prior lessons<br>
+                                • Limited evidence of understanding key concepts<br>
+                                • Field journal reflection incomplete or off-topic<br>
+                                • May need individual conference to process ideas
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <h4>💡 Assessment Philosophy</h4>
+                    <p>Discussion Days assess synthesis, reflection, and building on others' ideas. Value quality of thinking over quantity of talk. A student who speaks once but offers a profound insight earns full credit.</p>
+                </div>
+            </section>
+
+            <!-- DIFFERENTIATION SECTION -->
+            <section id="differentiation" class="section">
+                <h2>♿ Differentiation & Support</h2>
+
+                <h3>For Students Struggling to Participate</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Challenge</th>
+                            <th>Support Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Reluctant to speak in whole class</strong></td>
+                            <td>
+                                • Let them know in advance you'll call on them (low-stakes question)<br>
+                                • Use talking chips or name cards for equity<br>
+                                • Offer "phone a friend"—can ask partner to share their idea<br>
+                                • Value pair discussion highly—circulate and validate contributions
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Can't access field journal entries</strong></td>
+                            <td>
+                                • Provide 5 minutes at start to enhance thin entries<br>
+                                • Display anonymous strong example<br>
+                                • Give sentence frames: "During Lesson 3.5, I noticed..."<br>
+                                • Allow verbal processing before discussion
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Difficulty synthesizing across lessons</strong></td>
+                            <td>
+                                • Provide anchor charts from 3.3 and 3.5 as visual references<br>
+                                • Give specific prompts: "Look at your context decisions from 3.3"<br>
+                                • Use graphic organizer: Context | Quality | Editorial Voice
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>For Advanced Students</h3>
+
+                <p><strong>Extension Challenges:</strong></p>
+                <ul>
+                    <li>"What evaluation principles transfer across ALL domains vs. which are domain-specific?"</li>
+                    <li>"Why does systematic practice develop the editorial voice? Connect this to skill development in other domains."</li>
+                    <li>"Design an editorial judgment rubric specifically for YOUR creative project genre."</li>
+                </ul>
+            </section>
+
+            <!-- CHALLENGES SECTION -->
+            <section id="challenges" class="section">
+                <h2>🚧 Anticipated Challenges & Solutions</h2>
+
+                <h3>Challenge 1: Students Have Insufficient Field Journal Documentation</h3>
+                <p><strong>Solution:</strong> Build in 5 minutes for journal enhancement before discussions. Display anonymous strong examples. Focus think-pair-share on what they REMEMBER even if not documented.</p>
+
+                <h3>Challenge 2: Discussion Stays Surface-Level</h3>
+                <p><strong>Solution:</strong> Press consistently for specificity: "Show me the journal entry." Model going deeper. Use "say more" prompt. Redirect to evidence.</p>
+
+                <h3>Challenge 3: Dominant Voices, Quiet Voices</h3>
+                <p><strong>Solution:</strong> Use talking chips. Structured turn-taking. Think-pair-share increases participation. "Phone a friend" for quiet students.</p>
+
+                <h3>Challenge 4: Students Can't Connect Context and Quality</h3>
+                <p><strong>Solution:</strong> Use concrete examples. Display anchor charts. Draw two-column chart showing connections. Work through one example together.</p>
+
+                <h3>Challenge 5: "Editorial Voice" Concept Feels Abstract</h3>
+                <p><strong>Solution:</strong> Use multiple metaphors. Ask about other domains ("When you watch a movie, do you notice bad acting?"). Make it physical. Focus on examples from their experience.</p>
+            </section>
+
+            <!-- REFLECTION SECTION -->
+            <section id="reflection" class="section">
+                <h2>💭 Teacher Reflection</h2>
+
+                <h3>After Teaching This Lesson</h3>
+
+                <p><strong>What worked:</strong></p>
+                <ul>
+                    <li>Which discussion protocol generated the richest thinking?</li>
+                    <li>Which questions prompted the most specific examples?</li>
+                    <li>What evidence showed students making connections?</li>
+                </ul>
+
+                <p><strong>What needs adjustment:</strong></p>
+                <ul>
+                    <li>Pacing—did we have enough time for each section?</li>
+                    <li>Which students need additional support with synthesis?</li>
+                    <li>Are field journals documenting learning effectively?</li>
+                </ul>
+
+                <h3>🎯 Looking Ahead: Lesson 3.8 Preview</h3>
+
+                <p>Tomorrow's lab has students building simulations—complex prompting tasks where they'll need strong editorial judgment to know when output is "good enough." Today's discussion about the "back of the mind voice" will be essential.</p>
+
+                <p><strong>Bridge to tomorrow:</strong> "Your editorial voice will guide your work. You'll use context decisions AND quality evaluation together."</p>
+            </section>
+
+        </div>
+    </div>
+</body>
+</html>
